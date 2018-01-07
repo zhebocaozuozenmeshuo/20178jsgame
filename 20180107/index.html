@@ -18,8 +18,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
-
+    .explain {
+      margin-bottom: 20px;
+      word-wrap: normal;
+    }
     canvas {
       border: 1px solid black;
     }
@@ -27,7 +31,13 @@
 </head>
 
 <body>
-
+  <div class="explain">
+    <p>
+      day01 完成:  <br>
+      01: 按 a 键挡板向左移动 按 d 键挡板向右移动 <br>
+      02: 按 f 键发射小球 小球与挡板碰撞反弹 <br>
+    </p>
+  </div>
   <canvas id="id-canvas" width="400" height="300"></canvas>
 
   <script>
