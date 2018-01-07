@@ -4,9 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>学着写小游戏目录</title>
+    <style>
+        a {
+            text-decoration: none;
+            border-bottom: 1px solid;
+        }
+    
+        * {
+            box-sizing: border-box;
+        }
+    
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+    
+        .page {
+            width: 36em;
+            margin: 2em;
+            border: 1px solid #ddd;
+            padding: 0 1em;
+            box-shadow: 3px 3px 6px hsla(0, 0%, 0%, 0.1);
+        }
+    
+        ol>li {
+            padding: .2em .5em;
+        }
+    
+        ol>li:hover {
+            background: #ddd;
+        }
+    
+        ol>li .title {
+            float: right;
+        }
+    </style>
 </head>
 <body>
-    <a href="https://zhebocaozuozenmeshuo.github.io/20178jsgame/20180107/index.html">Run day01/20180107</a>
+    <div class="page">
+        <h1>
+            使用 JavaScript 写小游戏
+        </h1>
+        <h2>
+            （萧井陌直播）
+        </h2>
+        <p>不用任何框架、预编译，用最笨的办法写小游戏</p>
+        <p>基本没有使用最新 ES 语法 233333</p>
+        <p>
+            <a href="https://github.com/zhebocaozuozenmeshuo/20178jsgame" target="_blank">源代码</a>托管地址，欢迎批评指正</p>
+        <ol>
+            <li>
+                <!-- <a href="https://zhebocaozuozenmeshuo.github.io/20178jsgame/20180107/index.html"> -->
+                <a href="./20180107/index.html">
+                    Run day01/20180107
+                </a>
+                <span class="title">
+                    打砖块
+                </span>
+            </li>
+        </ol>
+    </div>
 </body>
 </html>
