@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>game 1</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .explain {
+      margin-bottom: 20px;
+      width: 25em;
+      height: 7em;
+      box-shadow: 3px 3px 6px hsla(0, 0%, 0%, 0.1);
+      overflow-y: scroll;
+    }
+
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="explain"></div>
+  <canvas id="id-canvas" width="400" height="300"></canvas>
+  <hr>
+  <input type="range" id="id-input-speed" value="60">
+
+  <script src="guagame.js"></script>
+  <script src="paddle.js"></script>
+  <script src="block.js"></script>
+  <script src="ball.js"></script>
+  <script src="level.js"></script>
+  <script src="utils.js"></script>
+  
+  <script>
+    var loadLevel = function (n) {
+      var blocks = []
+      n = n - 1
+      var level = levels[n]
+      for (var i = 0; i < level.length; i++) {
+        var p = level[i]
+        // 设置 block 坐标
+        var b = Block(p)
+        blocks.push(b)
+      }
+      return blocks
+    }
+
+    // var blocks = []
+    window.paused = false
+    var enableDebugMode = function (enable) {
+      if (!enable) {
+        return
+      }
+      window.addEventListener('keydown', function (event) {
+        var k = event.key
+        if (k == 'p') {
+          window.paused = ! window.paused
+        } else if ('123'.includes(k)) {
+          blocks = loadLevel(Number(k))
+        }
+      })
+      // 控制速度
+      document.querySelector('#id-input-speed').addEventListener('input', function(event) {
+        var input = event.target
+        window.fps = Number(input.value)
+      })
+    }
+    var __main = function () {
+      enableDebugMode(true)
+
+      var game = GuaGame(60)
+
+      var paddle = Paddle()
+      var ball = Ball()
+
+      blocks = loadLevel(1)
+
+      game.registerAction('a', function () {
+        paddle.moveLeft()
+      })
+
+      game.registerAction('d', function () {
+        paddle.moveRight()
+      })
+
+      game.registerAction('f', function () {
+        ball.fire()
+      })
+
+      game.update = function () {
+        if (window.paused) {
+          return
+        }
+        ball.move()
+        // 判断相撞
+        if (paddle.collide(ball)) {
+          // 这里应该调用一个 ball.反弹() 来实现
+          ball.反弹()
+        }
+        // 判断 ball 和 blocks 相撞
+        for (var i = 0; i < blocks.length; i++) {
+          var block = blocks[i]
+          if (block.collide(ball)) {
+            block.kill()
+            ball.反弹()
+          }
+        }
+      }
+
+      game.draw = function () {
+        // draw
+        // game.context.drawImage(paddle.image, paddle.x, paddle.y)
+        game.drawIamge(paddle)
+        game.drawIamge(ball)
+        // draw blocks
+        for (var i = 0; i < blocks.length; i++) {
+          var block = blocks[i]
+          if (block.alive) {
+            game.drawIamge(block)
+          }
+        }
+      }
+    }
+    __main()
+  </script>
+
+</body>
+
+</html>
