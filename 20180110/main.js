@@ -123,7 +123,7 @@ var __main = function () {
         game.draw = function () {
             // draw 背景
             game.context.fillStyle = '#555'
-            game.context.fillRect(0, 0, 400, 300)
+            // game.context.fillRect(0, 0, 400, 300)
             // draw
             game.drawIamge(paddle)
             game.drawIamge(ball)
