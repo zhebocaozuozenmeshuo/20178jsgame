@@ -12,7 +12,7 @@ var Scene = function (game) {
     game.registerAction('a', function () {
         paddle.moveLeft()
     })
-2
+
     game.registerAction('d', function () {
         paddle.moveRight()
     })
