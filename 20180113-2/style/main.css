@@ -1,0 +1,7 @@
+* { margin: 0; padding: 0; }
+
+body { width: 100vw;  height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+
+.explain { margin-bottom: 20px; width: 25em; height: 7em; box-shadow: 3px 3px 6px hsla(0, 0%, 0%, 0.1); overflow-y: scroll; }
+
+canvas { border: 1px solid black;  }
