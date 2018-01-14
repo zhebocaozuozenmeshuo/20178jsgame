@@ -27,7 +27,6 @@ var enableDebugMode = function (enable, game) {
 }
 
 var __main = function () {
-    
     var images = {
         sky: 'img/sky.png',
         cloud: 'img/cloud.png',

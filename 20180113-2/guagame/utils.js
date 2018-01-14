@@ -48,7 +48,7 @@ var explain = `
 //     e('#id-text-log').value += '\n' + s
 // }
 var log = console.log.bind(console)
-log(explain)
+// log(explain)
 var imageFromPath = function (path) {
     var img = new Image()
     img.src = path
@@ -62,4 +62,9 @@ var rectIntersects = function (a, b) {
         }
     }
     return false
+}
+
+const randomBetween = function(start, end) {
+    var n = Math.random() * (end - start + 1)
+    return Math.floor(n + start)
 }
