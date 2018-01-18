@@ -59,5 +59,8 @@ class SceneTitle extends GuaScene {
         window.addEventListener('mousedown', function() {
             self.b.jump()
         })
+        window.addEventListener('click', function() {
+            self.b.jump()
+        })
     }
 }

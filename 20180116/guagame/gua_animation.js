@@ -20,6 +20,7 @@ class GuaAnimation {
         this.h = this.texture.height
 
         this.rotation = 0
+        this.alpha = 1
         // 重力和加速度
         this.gy = 10
         this.vy = 0
@@ -35,6 +36,10 @@ class GuaAnimation {
         this.rotation = -45
     }
     update() {
+        // 更新 alpha
+        if (this.alpha > 0) {
+            this.alpha -= 0.05
+        }
         // 更新受力
         this.y += this.vy
         this.vy  += this.gy * (1 / 60)
@@ -63,6 +68,8 @@ class GuaAnimation {
         if(this.flipX) {
             context.scale(-1, 1)
         }  
+        // var alpha = context.globalAlpha
+        context.globalAlpha = this.alpha
         context.rotate(this.rotation * Math.PI / 180)
         context.translate(-w2, -h2)
 
