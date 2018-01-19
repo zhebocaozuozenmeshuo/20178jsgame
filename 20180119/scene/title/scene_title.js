@@ -134,6 +134,7 @@ class SceneTitle extends GuaScene {
         this.game.registerAction('j', function(keyStatus) {
             self.b.jump()
         })
+        this.game.canvas.addEventListener("touchstart", self.b.jump(), false);
         window.addEventListener('mousedown', function() {
             self.b.jump()
         })
